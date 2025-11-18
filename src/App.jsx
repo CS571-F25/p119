@@ -13,9 +13,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/p119/" element={<FlashcardLayout />}>
-          <Route path="/p119/deck-creation" element={<DeckCreation/>}></Route>
-          <Route path="/p119/deck-library" element={<DeckLibrary/>}></Route>
-          <Route path="/p119/study-deck" element={<StudyDeck />}></Route>
+          <Route index element={<DeckCreation/>}></Route>
+          <Route path="deck-creation" element={<DeckCreation/>}></Route>
+          <Route path="deck-library" element={<DeckLibrary/>}></Route>
+          <Route path="study-deck" element={<StudyDeck />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
