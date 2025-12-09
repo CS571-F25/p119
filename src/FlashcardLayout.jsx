@@ -21,6 +21,7 @@ function FlashcardLayout() {
         <div>
         <Navbar bg="primary" variant="dark" sticky="top" className="app-navbar">
             <Container fluid>
+                <Navbar.Brand className="fw-bold">Flashcard Flipper</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link as={Link} to="deck-creation">Deck Creation</Nav.Link>
                     <Nav.Link as={Link} to="deck-library">Deck Library</Nav.Link>
