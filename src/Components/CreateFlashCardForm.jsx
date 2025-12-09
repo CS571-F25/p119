@@ -10,7 +10,8 @@ export default function CreateFlashcardForm(props) {
 
     props.onAdd({
       term: term.trim(),
-      definition: definition.trim()
+      definition: definition.trim(),
+      included: true
     });
 
     setTerm("");
@@ -24,8 +25,9 @@ export default function CreateFlashcardForm(props) {
         <form onSubmit={handleSubmit}>
           {/* Term */}
           <div className="mb-3">
-            <label className="form-label">Term</label>
+            <label htmlFor="flashcard-term" className="form-label">Term</label>
             <input
+              id="flashcard-term"
               type="text"
               className="form-control"
               placeholder="Enter term..."
@@ -36,8 +38,9 @@ export default function CreateFlashcardForm(props) {
           </div>
           {/* Definition */}
           <div className="mb-3">
-            <label className="form-label">Definition</label>
+            <label htmlFor="flashcard-definition" className="form-label">Definition</label>
             <textarea
+              id="flashcard-definition"
               className="form-control"
               rows={3}
               placeholder="Enter definition..."

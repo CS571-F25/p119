@@ -6,7 +6,7 @@ export default function Flashcard(props) {
 
   return (
     <Card
-      style={{width: "30rem", height: "25rem", alignItems: "center", justifyContent: "center"}}
+      style={{width: "30rem", height: "20rem", alignItems: "center", justifyContent: "center"}}
       onClick={() => props.setFlipped(!props.flipped)}
     >
       {props.flipped?<h2>{props.card.definition}</h2>:<h2>{props.card.term}</h2>}

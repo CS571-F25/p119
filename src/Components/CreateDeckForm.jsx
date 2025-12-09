@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function CreateDeckForm({ onCreate }) {
+export default function CreateDeckForm(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -10,10 +10,11 @@ export default function CreateDeckForm({ onCreate }) {
     if (!title.trim()) return;
 
     // Pass data up to parent component
-    onCreate({
+    props.onCreate({
       title: title.trim(),
       description: description.trim(),
-      createdAt: new Date().toISOString(),
+      totalSessions: 0,
+      percentCorrect: []
     });
 
     // Clear form
@@ -29,8 +30,9 @@ export default function CreateDeckForm({ onCreate }) {
         <form onSubmit={handleSubmit}>
           {/* Title */}
           <div className="mb-3">
-            <label className="form-label">Deck Title</label>
+            <label htmlFor="deck-title" className="form-label">Deck Title</label>
             <input
+              id="deck-title"
               type="text"
               className="form-control"
               placeholder="Enter deck name..."
@@ -42,8 +44,9 @@ export default function CreateDeckForm({ onCreate }) {
 
           {/* Description (optional) */}
           <div className="mb-3">
-            <label className="form-label">Description (optional)</label>
+            <label htmlFor="deck-description" className="form-label">Description (optional)</label>
             <textarea
+              id="deck-description"
               className="form-control"
               rows={3}
               placeholder="What is this deck about?"
