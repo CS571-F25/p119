@@ -28,7 +28,9 @@ function StudyDeck() {
         newStats[currentCard] = isCorrect ? 1 : 0;
         setStats(newStats);
         if (currentCard >= includedCards.length - 1) {
-            const percent = includedCards.length > 0 ? Math.round((totalCorrect/ includedCards.length) * 100) : 0;
+            // Calculate percent correct from updated stats
+            const correctCount = newStats.reduce((acc, val) => acc + (val ? 1 : 0), 0);
+            const percent = includedCards.length > 0 ? Math.round((correctCount / includedCards.length) * 100) : 0;
 
             setDecks(prevDecks => {
                 const updatedDecks = prevDecks.map((deck, idx) => {
