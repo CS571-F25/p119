@@ -11,12 +11,6 @@ export default function StudyProgress(props) {
       <h5 className="mb-3">Study Progress</h5>
 
       <ProgressBar now={percent} label={`${percent}%`} animated className="mb-3" />
-
-      {/*<div className="d-flex justify-content-between mt-2">
-        <span><strong>{current}</strong> / {total} cards completed</span>
-        <span className="text-success">Correct: {correct}</span>
-        <span className="text-danger">Incorrect: {incorrect}</span>
-      </div>*/}
     
     </div>
   );

@@ -64,7 +64,7 @@ export default function DeckReview ({
           disabled={cards.length === 0}
           onClick={onAcceptDeck}
         >
-          ✔ Save Deck
+          Save Deck
         </Button>
       </Modal.Footer>
     </Modal>

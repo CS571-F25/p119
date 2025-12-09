@@ -18,6 +18,7 @@ function StudyDeck() {
     const [done, setDone] = useState(false)
     const [stats, setStats] = useState(Array(includedCards.length).fill(0))
     const [totalCorrect, setTotalCorrect] = useState(0)
+    const [decksUpdated, setDecksUpdated] = useState(false);
 
     function handleAnswer(isCorrect) {
         if (isCorrect) {
@@ -30,7 +31,7 @@ function StudyDeck() {
             const percent = includedCards.length > 0 ? Math.round((totalCorrect/ includedCards.length) * 100) : 0;
 
             setDecks(prevDecks => {
-                return prevDecks.map((deck, idx) => {
+                const updatedDecks = prevDecks.map((deck, idx) => {
                     if (idx !== currentDeck) return deck;
                     return {
                         ...deck,
@@ -40,6 +41,9 @@ function StudyDeck() {
                             : [percent]
                     };
                 });
+                // Set decksUpdated to true after decks update
+                setTimeout(() => setDecksUpdated(true), 0);
+                return updatedDecks;
             });
             setDone(true);
         } else {
@@ -53,6 +57,7 @@ function StudyDeck() {
         setDone(false)
         setStats(Array(includedCards.length).fill(0))
         setTotalCorrect(0)
+        setDecksUpdated(false);
     }
 
     return(<>
@@ -71,11 +76,11 @@ function StudyDeck() {
         </Container>
         :
         <Container>
-            <StudySummaryDashboard />
+            {decksUpdated && <StudySummaryDashboard />}
             {includedCards.map((card, i) => (
                 <FlashcardResult key={i} term={card.term} definition={card.definition} isCorrect={stats[i]} />
             ))}
-            <Button onClick={handleRestudy}>Restudy</Button>
+            <Button onClick={handleRestudy} size="lg" className="mt-4">Restudy</Button>
         </Container>
     }</>)
 }

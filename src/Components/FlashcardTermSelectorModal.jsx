@@ -39,24 +39,28 @@ export default function FlashcardTermSelectorModal(props) {
       </Modal.Header>
 
       <Modal.Body>
-        {decks[props.deckId].cards.map(({ term, definition }) => (
-          <div key={term} className="mb-3 p-2 border rounded bg-light">
-            <div className="d-flex justify-content-between align-items-center">
-              <div>
-                <strong>{term}</strong>
-                <p className="m-0 text-muted" style={{ fontSize: "0.9rem" }}>
-                  {definition}
-                </p>
+        {decks[props.deckId].cards.map(({ term, definition }, idx) => {
+          const checkboxId = `exclude-checkbox-${idx}`;
+          return (
+            <div key={term} className="mb-3 p-2 border rounded bg-light">
+              <div className="d-flex justify-content-between align-items-center">
+                <div>
+                  <strong>{term}</strong>
+                  <p className="m-0 text-muted" style={{ fontSize: "0.9rem" }}>
+                    {definition}
+                  </p>
+                </div>
+                <Form.Check
+                  id={checkboxId}
+                  type="checkbox"
+                  label={<label htmlFor={checkboxId} className="mb-0">Exclude</label>}
+                  checked={excluded.includes(term)}
+                  onChange={() => toggleTerm(term)}
+                />
               </div>
-              <Form.Check
-                type="checkbox"
-                label="Exclude"
-                checked={excluded.includes(term)}
-                onChange={() => toggleTerm(term)}
-              />
             </div>
-          </div>
-        ))}
+          );
+        })}
       </Modal.Body>
 
       <Modal.Footer>

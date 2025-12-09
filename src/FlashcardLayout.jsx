@@ -5,13 +5,13 @@ import {useState} from "react"
 import DeckContext from "./Context/DeckContext.js"
 import useStorage from "./useStorage.jsx"
 
-const startingDecks = [{title: "Spanish Numbers", description: "", cards: [{term: "uno", definition: "one"}, {term: "dos", definition: "two"}, {term: "tres", definition: "three"}, {term: "cuatro", definition: "four"}, {term: "cinco", definition: "five"}]},
-    {title: "JavaScript", description: "Basics of JS", cards: [{ term: "Variable", definition: "A named container that stores a value." },
-    { term: "Function", definition: "Reusable block of code that performs an action." }, { term: "Array", definition: "An ordered list of values." },
-    { term: "Object", definition: "A collection of key-value pairs." }, { term: "Promise", definition: "An object representing eventual completion of async work." }]}, 
-    {title: "Parts of a cell", description: "Functions of the parts of a cell", cards: [{ term: "Nucleus", definition: "Controls cell activities and stores DNA." },
-    { term: "Mitochondria", definition: "Produces energy through cellular respiration." }, { term: "Ribosome", definition: "Builds proteins in the cell." },
-    { term: "Cell membrane", definition: "Regulates what enters and leaves the cell." },{ term: "Golgi apparatus", definition: "Packages and ships proteins." }]}]
+const startingDecks = [{title: "Spanish Numbers", description: "", totalSessions: 0, percentCorrect: [], cards: [{term: "uno", definition: "one", included: true}, {term: "dos", definition: "two", included: true}, {term: "tres", definition: "three", included: true}, {term: "cuatro", definition: "four", included: true}, {term: "cinco", definition: "five", included: true}]},
+    {title: "JavaScript", description: "Basics of JS", totalSessions: 0, percentCorrect: [],cards: [{ term: "Variable", definition: "A named container that stores a value." , included: true},
+    { term: "Function", definition: "Reusable block of code that performs an action." , included: true}, { term: "Array", definition: "An ordered list of values." , included: true },
+    { term: "Object", definition: "A collection of key-value pairs.", included: true }, { term: "Promise", definition: "An object representing eventual completion of async work." , included: true}]}, 
+    {title: "Parts of a cell", description: "Functions of the parts of a cell", totalSessions: 0, percentCorrect: [],cards: [{ term: "Nucleus", definition: "Controls cell activities and stores DNA.", included: true },
+    { term: "Mitochondria", definition: "Produces energy through cellular respiration." , included: true}, { term: "Ribosome", definition: "Builds proteins in the cell." , included: true},
+    { term: "Cell membrane", definition: "Regulates what enters and leaves the cell." , included: true},{ term: "Golgi apparatus", definition: "Packages and ships proteins." , included: true}]}]
 
 function FlashcardLayout() {
     const [decks, setDecks] = useStorage("decks", startingDecks)
